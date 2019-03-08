@@ -8,7 +8,8 @@ $definition = New-AzPolicyDefinition -Name 'apply-default-tag-value' -DisplayNam
 
 # Set the scope to a resource group; may also be a resource, subscription, or management group
 # setting Subscription scope
-$scope = '/subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333'
+subid='0b1f6471-1bf0-4dda-aec3-111122223333'
+$scope = "/subscriptions/$subid"
 
 # Set the Policy Parameter (JSON format)
 $policyparam = '{ "tagName": { "value": "OWNEREMAIL" }, "tagValue": { "value": "TEST@SAMPLE.COM" } }'
@@ -33,7 +34,8 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 definition=$(az policy definition create --name 'apply-default-tag-value' --display-name 'Apply tag and its default value' --description 'Applies a required tag and its default value if it is not specified by the user' --rules 'https://raw.githubusercontent.com/alchen99/az-policies/master/apply-default-tag-value/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/alchen99/az-policies/master/apply-default-tag-value/azurepolicy.parameters.json' --mode All)
 
 # Set the scope to a resource group; may also be a resource, subscription, or management group
-scope=$(az group show --name 'YourResourceGroup')
+subid='0b1f6471-1bf0-4dda-aec3-111122223333'
+scope="/subscriptions/$subid"
 
 # Set the Policy Parameter (JSON format)
 policyparam='{ "tagName": { "value": "OWNEREMAIL" }, "tagValue": { "value": "TEST@SAMPLE.COM" } }'
