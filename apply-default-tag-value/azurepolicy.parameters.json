@@ -1,0 +1,17 @@
+// 20190307212826
+// https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json
+
+{
+  "tagName": {
+    "type": "String",
+    "metadata": {
+      "description": "Name of the tag, such as OWNEREMAIL"
+    }
+  },
+  "tagValue": {
+    "type": "String",
+    "metadata": {
+      "description": "Value of the tag, such as SOMEONE@SOMEWHERE.COM"
+    }
+  }
+}
